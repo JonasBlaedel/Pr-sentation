@@ -1,0 +1,71 @@
+---
+import "../style.css";
+const { header, subheader } = Astro.props;
+---
+
+<section class="sponsor_container">
+  <div class="heading">
+    <p>{subheader}</p>
+    <h2>{header}</h2>
+  </div>
+  <div class="sponsers">
+    <img src="/img/SEBRA.png" alt="sebra" />
+    <img src="/img/KAEREBORN.png" alt="KÆRE BØRN" />
+    <img src="/img/BABYSAM.png" alt="BABYSAM" />
+    <img src="/img/LUKSUS.png" alt="luksusbaby" />
+    <img src="/img/ONSKEBORN.png" alt="ønskebørn" />
+    <img src="/img/DERMA 2.png" alt="derma" />
+    <img src="/img/BIBS.png" alt="bibs" />
+  </div>
+</section>
+
+<style>
+  .sponsor_container {
+    margin-bottom: var(--l-spacing);
+    padding: var(--magn);
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .sponsers {
+    display: flex;
+    flex-direction: row;
+    gap: var(--xl-spacing);
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sponsers img {
+    width: 100px;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-bottom: var(--m-spacing);
+    text-transform: uppercase;
+  }
+
+  .heading p {
+    color: var(--p-blue);
+  }
+
+  @media screen and (min-width: 800px) {
+    .sponsor_container {
+      padding: var(--desk-magn);
+    }
+    .heading {
+      align-items: center;
+    }
+    .sponsers {
+      display: flex;
+      flex-direction: row;
+      gap: var(--xl-spacing);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import MainLayout from "../components/MainLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import VerticalSlider from "../components/VerticalSlider.astro";
+import HorizontalSlider from "../components/HorizontalSlider.astro";
+import QnA from "../components/QnA.astro";
+import Tickets from "../components/Tickets.astro";
+import Sponsers from "../components/Sponsers.astro";
+---
+
+<MainLayout>
+  <HeroSection subheader="Motorisk inspiration til dig og din baby" />
+  <VerticalSlider header="Hvad er Tumletid?" subheader="Tumletid" />
+  <HorizontalSlider header="Hvad får du i din goodiebag?" subheader="Goodiebag" filter="goodie" background="blue" justify="center" link="goodiebag" />
+  <HorizontalSlider header="Tumledyr vi leger med" subheader="Tumlemøbler" filter="product" gap="gap" link="tumlemøbler" />
+  <Tickets header="Køb billet til en tumletid" subheader="Tumletidsbilletter" />
+  <Sponsers header="Dem, vi arbejder sammen med" subheader="Samarbejdspartnere" />
+  <QnA header="Ofte stillede spørgsmål" subheader="FAQ" />
+</MainLayout>

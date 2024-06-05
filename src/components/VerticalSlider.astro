@@ -1,0 +1,228 @@
+---
+import "../style.css";
+
+const url = "https://bxkrncwullyblgqmyhzx.supabase.co/rest/v1/vertical";
+
+const options = {
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4a3JuY3d1bGx5YmxncW15aHp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ5ODQ1NzcsImV4cCI6MjAzMDU2MDU3N30.Rwwc-O88qXvYTF_AYVkxvJ-Fy1-sT0oalGR576_EPaI",
+  },
+};
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+const { header, subheader } = Astro.props;
+---
+
+<section class="vertical_container" id="tumletid">
+  <div id="vertical_left">
+    <div id="heading">
+      <p id="subheading">{subheader}</p>
+      <h2>{header}</h2>
+    </div>
+    <p class="info">Kom og deltag i en sjov session med din baby (0-12 måneder).</p>
+
+    <p class="info">
+      Opdag, hvordan du kan støtte din babys udvikling af motorik. Vi vil introducere motorisk leg ved hjælp af bObles tumlemøbler og guide dig gennem konkrete øvelser, der fremmer din babys motoriske færdigheder i løbet af det første år.
+    </p>
+
+    <p class="info">
+      Sammen vil vi udforske legende aktiviteter, der ikke kun stimulerer, men også udfordrer din babys motoriske færdigheder. Vi vil ligge, rulle, kravle, stå, gå og balancere, alt sammen med det formål at skabe en glad og sund krop.
+    </p>
+
+    <p class="info">
+      Vi tror på betydningen af leg i en babys udvikling, og vores sessioner er designet til at skabe en legende atmosfære, hvor læring og sjov går hånd i hånd. Fra tummy time til at styrke rygmusklerne til at støtte de første skridt, vil vores
+      program være en kilde til glæde og vækst for både dig og din lille en.
+    </p>
+  </div>
+  <div id="vertical_right">
+    <div id="image_slider">
+      {data.map((ttimg) => <img src={`/img/${ttimg.img}`} alt={ttimg.alt} />)}
+    </div>
+    <button class="scrollUp moveSlide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m15 4l2 2l-6 6l6 6l-2 2l-8-8z"></path></svg></button>
+    <button class="scrollDown moveSlide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"></path></svg></button>
+  </div>
+</section>
+
+<style>
+#image_slider::-webkit-scrollbar {
+  display: none;
+}
+
+  .vertical_container {
+    margin-inline: var(--magn);
+    margin-bottom: var(--l-spacing);
+    scroll-margin-top: 6.25rem;
+  }
+
+  #vertical_left {
+    margin-bottom: var(--l-spacing);
+  }
+  #vertical_right {
+    position: relative;
+  }
+
+  #vertical_left p:not(#subheading) {
+    margin-bottom: var(--s-spacing);
+  }
+
+  #image_slider {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
+    gap: var(--s-spacing);
+  }
+
+  #image_slider img {
+    flex-shrink: 0;
+    width: calc(65% - (var(--s-spacing) * 2));
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  #heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-bottom: var(--m-spacing);
+    text-transform: uppercase;
+  }
+
+  #heading p {
+    color: var(--p-blue);
+  }
+
+  .moveSlide {
+    position: absolute;
+    top: 20%;
+    right: var(--s-spacing);
+    background-color: var(--p-white);
+    border: none;
+    border-radius: 100%;
+    color: var(--p-blue);
+    height: 40px;
+    width: 40px;
+    padding: var(--xs-spacing);
+    transition: 150ms;
+  }
+
+  .scrollUp {
+    left: var(--s-spacing);
+  }
+  .scrollDown {
+    right: var(--s-spacing);
+  }
+
+  @media screen and (min-width: 800px) {
+    .vertical_container {
+      margin-inline: var(--desk-magn);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--m-spacing);
+    }
+    .moveSlide:hover {
+      background-color: rgba(253, 253, 253, 0.5);
+      color: rgba(2, 79, 191, 0.5);
+    }
+
+    #vertical_left {
+      padding: var(--xl-spacing);
+    }
+
+    #vertical_right {
+      position: relative;
+    }
+    #image_slider {
+      position: absolute;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-direction: column;
+      width: fit-content;
+      height: 100%;
+      white-space: nowrap;
+    }
+
+    .moveSlide {
+      position: absolute;
+      top: 50%;
+      right: var(--s-spacing);
+      background-color: var(--p-white);
+      border: none;
+      border-radius: 100%;
+      color: var(--p-blue);
+      height: 40px;
+      width: 40px;
+      padding: var(--xs-spacing);
+      transition: 150ms;
+    }
+    .moveSlide:hover {
+      background-color: rgba(253, 253, 253, 0.5);
+      color: rgba(2, 79, 191, 0.5);
+    }
+    .scrollUp {
+      margin-bottom: var(--xl-spacing);
+      transform: rotate(90deg);
+      left: auto;
+    }
+
+    .scrollDown {
+      margin-top: var(--xl-spacing);
+      transform: rotate(90deg);
+    }
+
+    #image_slider img {
+      flex-shrink: 0;
+      width: 100%;
+      aspect-ratio: initial;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollUp = document.querySelector(".scrollUp");
+    const scrollDown = document.querySelector(".scrollDown");
+    const imgContainer = document.querySelector("#image_slider");
+
+    if (window.innerWidth > 800) {
+      scrollUp.addEventListener("click", function () {
+        imgContainer.scrollBy({
+          top: -250,
+          left: 0,
+          behavior: "smooth",
+        });
+      });
+
+      scrollDown.addEventListener("click", function () {
+        imgContainer.scrollBy({
+          top: 250,
+          left: 0,
+          behavior: "smooth",
+        });
+      });
+    } else {
+      scrollUp.addEventListener("click", function () {
+        imgContainer.scrollBy({
+          top: 0,
+          left: -250,
+          behavior: "smooth",
+        });
+      });
+
+      scrollDown.addEventListener("click", function () {
+        console.log("clicked");
+        imgContainer.scrollBy({
+          top: 0,
+          left: 250, // Scroll right by 200px
+          behavior: "smooth",
+        });
+      });
+    }
+  });
+</script>

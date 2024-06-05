@@ -1,0 +1,50 @@
+---
+import "../style.css";
+const { header, subheader } = Astro.props;
+---
+
+<section class="heroSection">
+  <div id="text">
+    <h4 class="">{subheader}</h4>
+    <a class="button" href="#billetter">Deltag i en Tumletid</a>
+  </div>
+</section>
+
+<style>
+  a.button {
+    border: 1px solid var(--p-white);
+    background-color: var(--p-white);
+    color: var(--p-black);
+    text-align: center;
+    transition: 200ms;
+  }
+  a.button:hover {
+    background-color: rgba(253, 253, 253, 0.5);
+    color: var(--p-black);
+  }
+
+  .heroSection {
+    background-image: url("/img/front-page.webp");
+    height: 70vh;
+    background-position: top;
+    display: flex;
+    padding: var(--m-spacing);
+    align-items: flex-end;
+    background-size: cover;
+  }
+
+  #text {
+    display: flex;
+    flex-direction: column;
+    color: var(--p-white);
+    margin-bottom: var(--l-spacing);
+    gap: var(--s-spacing);
+  }
+
+  @media (min-width: 800px) {
+    .heroSection {
+      height: 90vh;
+      padding: var(--xl-spacing);
+    }
+  }
+</style>

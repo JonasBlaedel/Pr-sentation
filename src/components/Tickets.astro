@@ -1,0 +1,21 @@
+---
+import "../style.css";
+import Events from "../components/Events.jsx";
+
+const url = "https://bxkrncwullyblgqmyhzx.supabase.co/rest/v1/tickets";
+
+const options = {
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4a3JuY3d1bGx5YmxncW15aHp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ5ODQ1NzcsImV4cCI6MjAzMDU2MDU3N30.Rwwc-O88qXvYTF_AYVkxvJ-Fy1-sT0oalGR576_EPaI",
+  },
+};
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+const { header, subheader } = Astro.props;
+---
+
+<Events client:load data={data} header={header} subheader={subheader} />
+
+<style></style>
