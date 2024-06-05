@@ -1,0 +1,94 @@
+---
+import "../style.css";
+
+const ugc = [
+  {
+    heading: "Marie, mor til Clara (10 måneder)",
+    text: "Tumletid har været en fantastisk oplevelse for både Clara og mig. Hun elsker de farverige og sjove legetøjsfigurer fra Bobles, og det har virkelig hjulpet med hendes motoriske udvikling. Det er også en dejlig måde at møde andre forældre påog få nye legekammerater.",
+  },
+  {
+    heading: "Sofie, mor til Emma (12 måneder)",
+    text: "Tumletid har været en kæmpe succes for vores familie. Emma er blevet meget mere selvsikker i sine bevægelser, og vi har set stor fremgang i hendes balance og koordination. Bobles har virkelig tænkt på alt, hvad der skal til for at gøre leg både sjov og lærerig.",
+  },
+  {
+    heading: "Jesper, far til Lucas (8 måneder)",
+    text: "Jeg kan ikke anbefale Tumletid nok! Lucas er altid så begejstret for at lege med de andre børn og udforske de forskellige aktiviteter. Bobles' produkter er perfekte til at stimulere hans nysgerrighed og give ham mulighed for at bevæge sig på en sikker måde.",
+  },
+  {
+    heading: "Lise, mor til Aksel (9 måneder)",
+    text: "Tumletid har været en utrolig berigende oplevelse for Aksel og mig. Han nyder virkelig at udforske de forskellige legeområder, og jeg kan se, hvordan det hjælper ham med at udvikle både fysisk og mentalt. Det er også skønt at dele disse øjeblikke med andre forældre og børn.",
+  },
+];
+
+const { header, subheader } = Astro.props;
+---
+
+<section id="testimonials">
+  <div id="heading">
+    <p>{subheader}</p>
+    <h2>{header}</h2>
+  </div>
+  <div id="testimonial_container">
+    {
+      ugc.map((testimonial) => (
+        <div class="testimonial">
+          <div class="testimonial_content">
+            <h4>{testimonial.heading}</h4>
+            <p>{`"${testimonial.text}"`}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  #heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-bottom: var(--m-spacing);
+    text-transform: uppercase;
+  }
+
+  #heading p {
+    color: var(--p-blue);
+  }
+
+  #testimonials {
+    padding: var(--magn);
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: var(--l-spacing);
+  }
+
+  #testimonial_container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--l-spacing);
+  }
+  .testimonial {
+    border-left: 3px solid var(--p-orange);
+  }
+
+  .testimonial_content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-spacing);
+    padding-left: var(--l-spacing);
+  }
+  .testimonial_content p {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 800px) {
+    #heading {
+      align-items: center;
+    }
+    #testimonials {
+      padding: var(--desk-magn);
+    }
+  }
+</style>
